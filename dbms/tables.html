@@ -1,0 +1,101 @@
+<?php 
+	session_start(); 
+
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: login.php");
+	}
+
+?>
+
+<html>
+<head>
+<title>Relations</title>
+</head>
+<style>
+h1 {
+  color:  white;
+}.welcome
+{
+color:red;
+}
+<
+body{
+background-size: cover;
+}
+input[type=submit] {
+    width: 20em;  height: 7em;
+	background:none;
+	border: 5px solid red;
+color: orange;
+}
+</style>
+<body background="education-book.jpg">
+ 	<div class="content">
+
+		<!-- notification message -->
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
+
+<?php  if (isset($_SESSION['username'])) : ?>
+	<p> <div class="welcome"><h1>Education</h1></div> <strong><?php echo $_SESSION['username']; ?></strong> 
+	<p><a href="index.php?logout='1'" style="color: blue;"><h3>Logout from Here</h3></a> </p>
+		<?php endif ?>
+  
+ 
+ 
+ <h1> <strong> <class="welcome"><color ="white"/> <font size="7"> Click the below buttons to access the respective relations  :-   </strong></h1></font>
+ 
+ 
+<form action="student.php" method="post">
+    
+<p>
+    <input type="submit"   name="submit" value="Student" />
+</p>
+    
+</form>
+
+<form action="address.php" method="post">
+    
+<p>
+    <input type="submit" name="submit" value="Address" />
+</p>
+    
+</form>
+<form action="subject.php" method="post">
+    
+<p>
+    <input type="submit" name="submit" value="Subject" />
+</p>
+    
+</form>
+<form action="departmentlogin.php" method="post">
+    
+<p>
+    <input type="submit" name="submit" value="Department" />
+</p>
+    
+</form>
+<form action="teacher.php" method="post">
+    
+<p>
+    <input type="submit" name="submit" value="Teacher" />
+</p>
+    
+</form>
+</body>
+</html>

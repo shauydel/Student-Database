@@ -1,0 +1,48 @@
+ add login.php in enter
+<?php 
+	session_start(); 
+
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: login.php");
+	}
+
+?>
+<
+//after body 
+<body>
+	<div class="content">
+
+		<!-- notification message -->
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
+
+//after floating box
+.welcome
+{
+color:red;
+}
+</style>
+<body>
+	<?php  if (isset($_SESSION['username'])) : ?>
+	<p> <div class="welcome"><h1>Welcome to Employee Database</h1></div> <strong><?php echo $_SESSION['username']; ?></strong> 
+	<p><a href="index.php?logout='1'" style="color: blue;"><h3>Click here to Logout</h3></a> </p>
+		<?php endif ?>
+  
+   <h1> <strong> <class="welcome"> <font size="7"> Relations:-   </strong></h1></font>
+ 
+ 
